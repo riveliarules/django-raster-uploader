@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="form">
+  <form action="/upload/" method="post" enctype="multipart/form-data">
+  {% csrf_token %}
+    <div class=" wrapper custom_select">
+        <label>Selecione o workspace</label>
+        <select name="workspace" required>
+            <option disabled selected value> -- Selecione um workspace -- </option>
+            {% for workspace in workspaces  %}
+            <option value= "{{workspace}}">{{ workspace }}</option>"
+            {% endfor %}
+        </select>
+    </div> 
+      <div class="wrapper inputfield">
+          <label>Selecione o arquivo raster</label>
+          <input type="file" name="document" class="input" required>
+      </div>
+      <div class="inputfield">
+          <input type="submit" value="Enviar" class="btn">
+      </div>
+  </form>
+</div>
+{% if messages %}
+<br>
+<div class="messages">
+    {% for msg in messages %}       
+    <div class="alert alert-{{msg.level_tag}}" role="alert">
+    {{msg.message}}
+    </div>
+    {% endfor %}
+</div>
+<div class="form">
+    <button class='btn'> <a href="/">Enviar outro arquivo.</a></button>
+</div>
+{% endif %}
+{% endblock %}

@@ -1,0 +1,23 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+  <title>{% block title %}Raster Uploader{% endblock %}</title>
+</head>
+<body>
+  <div class="wrapper">
+    <div class="title">
+        Upload de arquivo para o Geoserver
+    </div>
+    <div>
+      {% block content %}
+      {% endblock %}
+    </div>
+       
+</div>	
+</div>	
+</body>
+</html>
